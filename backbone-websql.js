@@ -69,9 +69,10 @@ _.extend(WebSQLStore.prototype,{
 	}
 });
 
-Backbone.sync = function(method, model, options) {
-	var store = model.store || model.collection.store, success, error;
-	
+Backbone.dbSync = function(method, model, options) {
+	console.log(model);
+	var store = JSON.stringify(model.attributes) || model.collection.store, success, error;
+	// console.warn(store);
 	if (store == null) {
 		console.warn("[BACKBONE-WEBSQL] model without store object -> ", model);
 	}
